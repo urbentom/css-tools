@@ -6,6 +6,9 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  --color-text: rgb(38, 38, 38);
+  --color-text-faded: rgb(100, 100, 100);
+  --color-text-highlight: rgb(217, 247, 240);
 }
 
 div {
@@ -18,16 +21,16 @@ h3,
 h4,
 h5 {
   font-family: futura-pt-bold, sans-serif;
-  color: rgb(38, 38, 38);
+  color: var(--color-text);
 }
 
 p {
   font-family: baskerville-display-pt, serif;
-  color: rgb(38, 38, 38);
+  color: var(--color-text);
 }
 
 a {
-  color: rgb(38, 38, 38);
+  color: var(--color-text);
   transition: color 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
   font-family: futura-pt-bold, sans-serif;
   font-weight: 700;
@@ -35,6 +38,10 @@ a {
   font-size: 1.2rem;
   margin: 0px;
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-text-highlight);
 }
 
 label {

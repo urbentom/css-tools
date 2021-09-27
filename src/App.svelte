@@ -9,11 +9,10 @@
 	<nav>
     <div class="nav">
 			<div class="nav__logo">
-				<h1>CSS Tools</h1>
+				<Link class="nav__links__link" to="/"><h1>CSS Tools</h1></Link>
 			</div>
 			<div class="nav__links">
-				<Link class="nav__links__link" to="/">Home</Link>
-    		<Link class="nav__links__link" to="colour">Colour</Link>
+    		<Link class="nav__links__link" to="colour">Colour Converter</Link>
 			</div>
 		</div>
   </nav>
@@ -48,6 +47,10 @@
     background-color: rgb(255, 255, 255);
     width: 100%;
     box-shadow: rgba(109, 109, 109,0.5) 3px 3px 10px -3px;
+
+		& h1{
+			margin: 0;
+		}
 
 		&__links{
 			display: flex;
