@@ -1,47 +1,60 @@
 <script>
-	let hexColor = "";
-	let rgbColor = {r: 0, g: 0, b: 0};
-	let color = "#ffffff";
-
-
-
-	$: getColours(), hexColor
-
-	function getColours(){
-
-		console.log("Get Color");
-
-		if(hexColor.length === 6){
-
-			let splitColor = hexColor.match(/.{1,2}/g);
-			let r = parseInt(splitColor[0], 16)
-			let g = parseInt(splitColor[1], 16)
-			let b = parseInt(splitColor[2], 16)
-
-			console.log("{r,g,b}", {r,g,b});
-
-			rgbColor = {r,g,b}
-			color = `#${hexColor}`
-
-		}
-
-
-	}
-
-
+  import { Router, Link, Route } from "svelte-routing";
+  import Home from "./routes/Home.svelte";
+  import ColourConverter from "./routes/ColourConverter.svelte";
+  export let url = "";
 </script>
 
-<main style="--background-color: {color}">
-	<div class="controls">
-		<input type="text" bind:value={hexColor} maxlength="6"/>
-		<input type="text" bind:value={rgbColor.r}/>
-		<input type="text" bind:value={rgbColor.g}/>
-		<input type="text" bind:value={rgbColor.b}/>
+<Router url="{url}">
+	<nav>
+    <div class="nav">
+			<div class="nav__logo">
+				<h1>CSS Tools</h1>
+			</div>
+			<div class="nav__links">
+				<Link class="nav__links__link" to="/">Home</Link>
+    		<Link class="nav__links__link" to="colour">Colour</Link>
+			</div>
+		</div>
+  </nav>
+	<div>
+		<Route path="colour" component="{ColourConverter}" />
+		<Route path="/" ><Home /></Route>
 	</div>
-</main>
+</Router>
 
-<style>
-	main {
-		background-color: var(--background-color);
+<style lang="scss">
+	nav{
+		padding: 10px 30px;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;		
 	}
+	
+	.nav{
+		padding: 20px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    box-sizing: border-box;
+    max-width: 1600px;
+    width: 100%;
+		border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    box-shadow: rgba(109, 109, 109,0.5) 3px 3px 10px -3px;
+
+		&__links{
+			display: flex;
+			gap: 1rem;
+		}
+
+		
+	}
+
 </style>
